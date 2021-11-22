@@ -1,8 +1,8 @@
 <?php
 
-include_once("config.php");
+require 'config.php';
 
-$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
+//$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 ?>
 
 <html>
@@ -18,6 +18,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 		<table width='80%' border=0>
 
 			<tr bgcolor='#CCCCCC'>
+				<td>ID</td>
 				<td>NAME</td>
 				<td>AGE</td>
 				<td>EMAIL</td>
@@ -25,8 +26,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 			</tr>
 			<?php
 
-			while ($res = mysqli_fetch_array($result)) {
-				echo "<tr>";
+			while ($res = mysqli_fetch_object($result)) {
+				echo "<td>" . $res['id']. "</td>";
 				echo "<td>" . $res['nama'] . "</td>";
 				echo "<td>" . $res['umur'] . "</td>";
 				echo "<td>" . $res['email'] . "</td>";
